@@ -3,22 +3,46 @@ $(function () {
   const $body = $("body");
   const $tabMenu = $(".tab-menu > li");
   const $tabContent = $(".tab-con-item");
+  const $minimi = $(".minimi");
 
   //배열에 이미지와 텍스트 정보를 저장
   const bgArr = [
     {
       pic: "blackpink01.jpg",
       title: "지수가 제일 예뻐요",
+      action: function () {
+        $minimi.css({
+          backgroundColor: "orangered",
+          backgroundImage: "url(img/jisoo01.png)",
+          transform: "translateY(-50px)",
+        });
+      },
     },
     {
       pic: "blackpink02.jpg",
       title: "지수가 정말 예뻐요",
+      action: function () {
+        $minimi.css({
+          backgroundColor: "yellowgreen",
+          backgroundImage: "url(img/jisoo02.png)",
+          transform: "rotate(20deg)",
+        });
+      },
     },
     {
       pic: "blackpink03.jpg",
       title: "지수가 항상 예뻐요",
+      action: function () {
+        $minimi.css({
+          backgroundColor: "skyblue",
+          backgroundImage: "url(img/jisoo03.png)",
+          transform: "scale(1.5)",
+        });
+      },
     },
   ];
+
+  bgArr[2].action(); //키를 써주는 것은 맞으나 매서드(함수)이기 때문에 ()로 실행까지 해줘야한다
 
   console.log(bgArr);
   console.log(bgArr[1]);
@@ -42,6 +66,10 @@ $(function () {
 
     //탭 콘텐츠의 제목을 수정
     $tabContent.eq(index).find("h2").text(bgArr[index].title);
+
+    bgArr[index].action();
+
+    //미니미 수정
   }
 
   $tabMenu.on("click", function (e) {
