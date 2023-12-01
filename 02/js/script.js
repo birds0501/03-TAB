@@ -10,6 +10,11 @@ $(function () {
   const $tabMenu = $(".tab-menu > li");
   const $tabContent = $(".tab-con-item");
 
+  //배경 이미지를 배열에 저장
+  const bgArr = ["blackpink01.jpg", "blackpink02.jpg", "blackpink03.jpg"];
+
+  console.log(bgArr[2]);
+
   //초기화
   let idx = 0;
   tabAction(idx);
@@ -18,8 +23,13 @@ $(function () {
   function tabAction(index) {
     //매서드 체인(동일한 선택자는 이어쓰는 것-간결해짐)
     $tabMenu.removeClass("on").eq(index).addClass("on");
-
     $tabContent.hide().eq(index).show();
+
+    //배경이미지 적용
+    $body.css({
+      // background: "url(img/" + bgArr[index] + ") no-repeat 0 0/ cover",
+      background: `url(img/${bgArr[index]}) no-repeat 0 0/ cover`,
+    });
   }
 
   $tabMenu.on("click", function (e) {
